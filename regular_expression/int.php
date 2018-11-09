@@ -50,6 +50,20 @@ foreach ($phone_numbers as $phone_number) {
 }
 echo "<br>";
 
+// 郵便番号の真偽を判断
+$postal_codes = ['123456', '〒123 456', '123 1234', '123-456'];
+
+$pattern     = "/〒?\d{3}-?\d{4}/";
+foreach ($postal_codes as $postal_code) {
+		$result = preg_match($pattern, $postal_code);
+		if ($result) {
+				echo "正しい表記方法です。<br>";
+		} else {
+				echo "{$postal_code}は正しくない表記方法です。もう一度ご確認ください。<br>";
+		}
+}
+echo "<br>";
+
 // クレジットカードの番号の真偽を判断
 $credit_cards = ['1234123412341234', '1234 1234 1234 1234', '1234 5678 9012 3456', '1234-1234-1234-1234'];
 
